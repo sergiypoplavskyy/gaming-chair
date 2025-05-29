@@ -415,7 +415,13 @@
       </form>
     </div>
   </div>
-<section class="form-section">
+<div class="theme-toggle">
+  <label>
+    🌙 <input type="checkbox" id="themeSwitcher"> Темна тема
+  </label>
+</div>
+
+<section class="form-section" id="orderSection">
   <h2 class="slide-left center-text">Оформити замовлення</h2>
   <div class="form-wrapper">
     <form action="https://formsubmit.co/srp.2.com@gmail.com" method="POST" onsubmit="return handleSubmit(event)">
@@ -431,6 +437,18 @@
     </form>
   </div>
 </section>
+
+<script>
+  const themeSwitcher = document.getElementById('themeSwitcher');
+  const body = document.body;
+  const orderSection = document.getElementById('orderSection');
+
+  themeSwitcher.addEventListener('change', () => {
+    body.classList.toggle('dark');
+    orderSection.classList.toggle('dark');
+  });
+</script>
+
 
 <footer>
   <p>Контакти:</p>
