@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="uk">
 <head>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Ігрове крісло EC GAMING</title>
@@ -36,10 +37,18 @@
       flex-wrap: wrap;
       margin-top: 30px;
     }
-    .gallery img {
-      width: 280px;
+    .gallery img {$1
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      border: 2px solid transparent;
       border-radius: 12px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+    .gallery img:hover {
+      transform: scale(1.08);
+      box-shadow: 0 0 10px rgba(46, 125, 50, 0.4);
+      border-color: #2e7d32;
+    }
+    .gallery img:hover {
+      transform: scale(1.08);
     }
     .hero p {
       font-size: 1.2em;
@@ -132,6 +141,28 @@
       }
     }
   </style>
+<script>
+  // Таймер до кінця тижня (неділя 23:59)
+  function updateTimer() {
+    const now = new Date();
+    const nextSunday = new Date();
+    nextSunday.setDate(now.getDate() + (7 - now.getDay()));
+    nextSunday.setHours(23, 59, 59, 999);
+
+    const diff = nextSunday - now;
+
+    const hours = Math.floor(diff / (1000 * 60 * 60)) % 24;
+    const minutes = Math.floor(diff / (1000 * 60)) % 60;
+    const seconds = Math.floor(diff / 1000) % 60;
+
+    document.getElementById("timer").innerText =
+      `${hours.toString().padStart(2, '0')}:${
+        minutes.toString().padStart(2, '0')}:${
+        seconds.toString().padStart(2, '0')}`;
+  }
+  setInterval(updateTimer, 1000);
+</script>
+  <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
 </head>
 <body>
 
@@ -140,12 +171,22 @@
 </header>
 
 <section class="hero">
-  <p>Комфортне, стильне та функціональне крісло для геймерів і офісних працівників. Масажна подушка, регулювання нахилу, 3 кольори на вибір.</p>
-  <div class="gallery">
-    <img src="біле.png" alt="Крісло біле">
-    <img src="зелене.png" alt="Крісло зелене">
-    <img src="червоне.png" alt="Крісло червоне">
+  <div style="margin-bottom: 20px; font-size: 1.5em; font-weight: 600;">
+    <div style="font-size: 0.8em; color: #d32f2f; margin-bottom: 5px;">До завершення акції:</div>
+    <div id="timer" style="font-size: 1.2em; font-weight: bold; color: #d32f2f; margin-bottom: 10px;">00:00:00</div>
+    <span style="text-decoration: line-through; color: #888;">4199₴</span>
+    <span style="color: #d32f2f; margin-left: 10px;">3499₴</span>
+    <span style="font-size: 0.6em; color: #666;">до кінця тижня</span>
   </div>
+  <p>Комфортне, стильне та функціональне крісло для геймерів і офісних працівників. Масажна подушка, регулювання нахилу, 3 кольори на вибір.</p>
+  <div class="swiper mySwiper" style="max-width: 800px; margin: 30px auto;">
+  <div class="swiper-wrapper">
+    <div class="swiper-slide"><img src="біле.png" alt="Крісло біле" style="width: 100%; border-radius: 12px;"></div>
+    <div class="swiper-slide"><img src="зелене.png" alt="Крісло зелене" style="width: 100%; border-radius: 12px;"></div>
+    <div class="swiper-slide"><img src="червоне.png" alt="Крісло червоне" style="width: 100%; border-radius: 12px;"></div>
+  </div>
+  <div class="swiper-pagination"></div>
+</div>
   <a href="#form" class="btn">Замовити зараз</a>
 </section>
 
@@ -160,9 +201,40 @@
   </ul>
 </section>
 
+<section class="features">
+  <h2>Відгуки клієнтів</h2>
+  <p style="font-size: 1em; color: #555; margin-bottom: 20px;">Ми будемо вдячні за ваш відгук після покупки ❤</p>
+  <ul>
+    <li><strong>Анна, Київ:</strong> Дуже зручне крісло! Користуюсь вже тиждень — спина дякує 🙌</li>
+    <li><strong>Олександр, Харків:</strong> Замовив червоне — прийшло швидко, все як на фото. Масаж справді працює!</li>
+    <li><strong>Ірина, Львів:</strong> Подарувала сину — в захваті! Зібрали за 20 хв. Рекомендую!</li>
+    <li><strong>Дмитро, Дніпро:</strong> Прийшло без одного колеса, але підтримка спрацювала миттєво — через два дні колесо вже було в мене. Дякую за сервіс!</li>
+  </ul>
+</section>
+
+<section class="features">
+  <h2>Доставка і оплата</h2>
+  <ul>
+    <li><strong>🚚 Доставка:</strong> Новою Поштою по всій Україні (1–3 дні). Вартість: 200–300 грн залежно від регіону.</li>
+    <li><strong>📦 Відправка:</strong> у день замовлення або наступного робочого дня</li>
+    <li><strong>💵 Оплата:</strong> післяплата або повна передплата на картку</li>
+    <li><strong>🔄 Обмін / Повернення:</strong> протягом 14 днів згідно з законодавством</li>
+  </ul>
+</section>
+
+<section class="features">
+  <h2>FAQ – Часті запитання</h2>
+  <ul>
+    <li><strong>Скільки часу займає доставка?</strong> – 1–3 дні Новою Поштою залежно від вашого міста.</li>
+        <li><strong>Як здійснюється оплата?</strong> – Або післяплата при отриманні, або передплата на картку.</li>
+    <li><strong>Чи можу я повернути товар?</strong> – Так, протягом 14 днів згідно з законодавством.</li>
+    <li><strong>Що входить у комплект?</strong> – Сидіння, спинка, підлокітники, база, колеса, масажна подушка, інструкція.</li>
+  </ul>
+</section>
+
 <section class="form-section" id="form">
   <h2>Оформити замовлення</h2>
-  <form action="https://formsubmit.co/srp.2.com@gmail.com" method="POST">
+  <form action="https://formsubmit.co/srp.2.com@gmail.com" method="POST" onsubmit="return handleSubmit(event)">
     <input type="text" name="name" placeholder="Ваше ім'я" required>
     <input type="tel" name="phone" placeholder="Телефон" required>
     <select name="color" required>
@@ -179,10 +251,35 @@
   <p>Контакти:</p>
   <div class="contacts">
     <a href="https://t.me/sergiydroopt" target="_blank">Telegram</a>
-    <a href="tel:+380000000000">Подзвонити</a>
+    <a href="tel:+380734597003">Подзвонити</a>
     <a href="https://m.me/mogo.ua" target="_blank">Messenger</a>
   </div>
 </footer>
 
+<script>
+  function handleSubmit(event) {
+    const form = event.target;
+    const name = form.name.value.trim();
+    const phone = form.phone.value.trim();
+    const color = form.color.value;
+
+    if (!name || !phone || !color) {
+      alert('Будь ласка, заповніть усі поля.');
+      return false;
+    }
+
+    alert('Дякуємо! Ваше замовлення надіслано. Ми скоро з вами зв’яжемось.');
+    return true;
+  }
+</script>
+<script>
+  const swiper = new Swiper('.mySwiper', {
+    loop: true,
+    pagination: {
+      el: '.swiper-pagination',
+      clickable: true,
+    },
+  });
+</script>
 </body>
 </html>
