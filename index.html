@@ -23,14 +23,8 @@
       line-height: 1.6;
     }
     header {
-      background: #ffffff;
-      padding: 40px 20px;
-      text-align: center;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-      background-image: url('https://www.transparenttextures.com/patterns/white-leather.png');
-      position: sticky;
-      top: 0;
-      z-index: 1000;
+      background: linear-gradient(90deg, #f2f4f8, #dce3ea);
+      
     }
     header h1 {
       margin: 0;
@@ -212,41 +206,14 @@
     float: right;
   }
 </style>
-<script>
-  // Таймер до кінця тижня (неділя 23:59)
-  function updateTimer() {
-    const now = new Date();
-    const nextSunday = new Date();
-    nextSunday.setDate(now.getDate() + (7 - now.getDay()));
-    nextSunday.setHours(23, 59, 59, 999);
 
-    const diff = nextSunday - now;
-
-    const hours = Math.floor(diff / (1000 * 60 * 60)) % 24;
-    const minutes = Math.floor(diff / (1000 * 60)) % 60;
-    const seconds = Math.floor(diff / 1000) % 60;
-
-    document.getElementById("timer").innerText =
-      `${hours.toString().padStart(2, '0')}:${
-        minutes.toString().padStart(2, '0')}:${
-        seconds.toString().padStart(2, '0')}`;
-  }
-  setInterval(updateTimer, 1000);
-</script>
   <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
   <script src="https://unpkg.com/scrollreveal"></script>
 </head>
 <body>
 
 <header>
-  <nav class="mobile-nav">
-    <button id="menu-toggle">☰ Меню</button>
-    <ul id="mobile-menu" class="hidden">
-      <li><a href="#form">Замовити</a></li>
-      <li><a href="#form">Контакти</a></li>
-      <li><a href="#">Головна</a></li>
-    </ul>
-  </nav>
+  
   <div style="display: flex; align-items: center; justify-content: center; gap: 10px; padding-bottom: 10px;">
   <img src="https://raw.githubusercontent.com/sergiypoplavskyy/gaming-chair/main/mogo-logo.png" alt="MOGO Logo" style="height: 40px;">
   <h1 style="margin: 0; font-size: 1.8em; font-weight: 600;">Геймерське крісло EC GAMING з масажною подушкою</h1>
@@ -263,10 +230,7 @@
   <div style="font-size: 0.7em; color: #666; margin-top: 4px;">до кінця тижня</div>
 </div>
   </div>
-    <div id="timer" style="font-size: 1.2em; font-weight: bold; color: #d32f2f; margin-bottom: 10px;">00:00:00</div>
-    <span style="text-decoration: line-through; color: #888;">4199₴</span>
-    <span style="color: #d32f2f; margin-left: 10px;">3499₴</span>
-    <span style="font-size: 0.6em; color: #666;">до кінця тижня</span>
+    
   </div>
   <p>Комфортне, стильне та функціональне крісло для геймерів і офісних працівників. Масажна подушка, регулювання нахилу, 3 кольори на вибір.</p>
   <div class="swiper mySwiper" style="max-width: 800px; margin: 30px auto;">
@@ -277,6 +241,7 @@
   </div>
   <div class="swiper-pagination"></div>
 </div>
+<a href="#form" class="btn" style="margin-top: 20px; display: inline-block;">Купити в 1 клік</a>
   <a href="#form" class="btn">Замовити зараз</a>
 </section>
 
@@ -381,11 +346,10 @@
 <footer>
   <p>Контакти:</p>
   <div class="contacts">
-    <a href="https://facebook.com" target="_blank"><img src="https://cdn-icons-png.flaticon.com/24/733/733547.png" alt="Facebook"></a>
-    <a href="https://www.instagram.com/mogo_ua/" target="_blank"><img src="https://cdn-icons-png.flaticon.com/24/2111/2111463.png" alt="Instagram"></a>
-    <a href="https://t.me/sergiydroopt" target="_blank">Telegram</a>
-    <a href="tel:+380734597003">Подзвонити</a>
-    <a href="https://m.me/mogo.ua" target="_blank">Messenger</a>
+    <a href="tel:+380734597003" title="Подзвонити"><img src="https://cdn-icons-png.flaticon.com/24/597/597177.png" alt="Phone"></a>
+    <a href="https://t.me/sergiydroopt" target="_blank" title="Telegram"><img src="https://cdn-icons-png.flaticon.com/24/2111/2111646.png" alt="Telegram"></a>
+    <a href="https://www.instagram.com/mogo_ua/" target="_blank" title="Instagram"><img src="https://cdn-icons-png.flaticon.com/24/2111/2111463.png" alt="Instagram"></a>
+    <a href="https://facebook.com/mogo.ua" target="_blank" title="Facebook"><img src="https://cdn-icons-png.flaticon.com/24/733/733547.png" alt="Facebook"></a>
   </div>
 </footer>
 
