@@ -16,12 +16,13 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
   <style>
     body {
-      font-family: 'Inter', sans-serif;
-      margin: 0;
-      background: linear-gradient(180deg, #f5f7fa 0%, #ffffff 100%);
-      color: #2c2c2c;
-      line-height: 1.6;
-    }
+  font-family: 'Inter', sans-serif;
+  margin: 0;
+  background: linear-gradient(180deg, #f5f7fa 0%, #ffffff 100%);
+  color: #2c2c2c;
+  line-height: 1.6;
+  transition: background 0.3s, color 0.3s;
+}
     header {
       background: linear-gradient(90deg, #f2f4f8, #dce3ea);
       
@@ -205,6 +206,72 @@
     content: "▼";
     float: right;
   }
+  @media (prefers-color-scheme: dark) {
+    body {
+      background: #121212;
+      color: #f0f0f0;
+    }
+    header {
+      background: linear-gradient(90deg, #1c1c1c, #2c2c2c);
+    }
+    .hero, .features, .form-section, footer {
+      background: #1e1e1e;
+    }
+    .features li, .accordion details {
+      background: #2a2a2a;
+      color: #f0f0f0;
+    }
+    .btn {
+      background: #388e3c;
+    }
+    .btn:hover {
+      background: #2e7d32;
+    }
+    input, select, textarea {
+      background: #2a2a2a;
+      color: #fff;
+      border: 1px solid #444;
+    }
+  }
+  .theme-toggle {
+    position: relative;
+    display: inline-block;
+    width: 48px;
+    height: 24px;
+  }
+  .theme-toggle input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+  .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: 0.4s;
+    border-radius: 24px;
+  }
+  .slider:before {
+    position: absolute;
+    content: "";
+    height: 18px;
+    width: 18px;
+    left: 3px;
+    bottom: 3px;
+    background-color: white;
+    transition: 0.4s;
+    border-radius: 50%;
+  }
+  input:checked + .slider {
+    background-color: #4caf50;
+  }
+  input:checked + .slider:before {
+    transform: translateX(24px);
+  }
 </style>
 
   <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
@@ -215,8 +282,13 @@
 <header>
   <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 20px 10px;">
     <img src="https://raw.githubusercontent.com/sergiypoplavskyy/gaming-chair/main/mogo-logo.png" alt="MOGO Logo" style="height: 50px; margin-bottom: 12px;">
-  <img src="https://raw.githubusercontent.com/sergiypoplavskyy/gaming-chair/main/mogo-logo.png" alt="MOGO Logo" style="height: 40px;">
   <h1 style="margin: 0; font-size: 1.8em; font-weight: 600; line-height: 1.3em;">Геймерське крісло EC GAMING з масажною подушкою</h1>
+</div>
+<div style="position: absolute; top: 10px; right: 10px;">
+  <label class="theme-toggle">
+    <input type="checkbox" id="themeSwitcher">
+    <span class="slider"></span>
+  </label>
 </div>
 </header>
 
@@ -248,11 +320,15 @@
 <section class="features">
   <h2 class="slide-left">Переваги</h2>
   <ul>
-    <li>Масажна подушка для попереку</li>
-    <li>Ергономічна спинка та сидіння</li>
-    <li>Регулювання висоти і нахилу</li>
-    <li>Міцна металева база</li>
-    <li>Кольори: Зелений, Білий, Червоний</li>
+    <li><strong>Матеріал оббивки:</strong> Еко-шкіра</li>
+    <li><strong>Максимальне навантаження:</strong> до 120 кг</li>
+    <li><strong>Регулювання висоти сидіння:</strong> так</li>
+    <li><strong>Механізм гойдання:</strong> так</li>
+    <li><strong>Підставка для ніг:</strong> висувна</li>
+    <li><strong>Підлокітники:</strong> з м’якими накладками</li>
+    <li><strong>Масажна функція:</strong> через USB</li>
+    <li><strong>Кольори:</strong> Зелений, Білий, Червоний</li>
+    <li><strong>Металева база:</strong> стійка та надійна</li>
   </ul>
 </section>
 
@@ -298,14 +374,8 @@
   </ul>
 </section>
 
-<section class="features">
-  <h2 class="slide-left">Доставка і оплата</h2>
-  <ul>
-    <li><strong>🚚 Доставка:</strong> Новою Поштою по всій Україні (1–3 дні). Вартість: 200–300 грн залежно від регіону.</li>
-    <li><strong>📦 Відправка:</strong> у день замовлення або наступного робочого дня</li>
-    <li><strong>💵 Оплата:</strong> післяплата або повна передплата на картку</li>
-    <li><strong>🔄 Обмін / Повернення:</strong> протягом 14 днів згідно з законодавством</li>
-  </ul>
+$1$2
+    <li><strong>💳 Онлайн-оплата:</strong> <a href="https://send.monobank.ua/jar/12345678" target="_blank" style="color:#2e7d32; font-weight:600; text-decoration:underline;">Оплатити через Monobank</a></li>$3
 </section>
 
 <section class="features">
@@ -431,6 +501,18 @@ function handleQuickOrder(event) {
   const menu = document.getElementById('mobile-menu');
   toggleBtn.addEventListener('click', () => {
     menu.classList.toggle('hidden');
+  });
+</script>
+<script>
+  const themeSwitcher = document.getElementById('themeSwitcher');
+  themeSwitcher.addEventListener('change', () => {
+    if (themeSwitcher.checked) {
+      document.documentElement.setAttribute('data-theme', 'dark');
+      document.body.classList.add('dark');
+    } else {
+      document.documentElement.removeAttribute('data-theme');
+      document.body.classList.remove('dark');
+    }
   });
 </script>
 </body>
