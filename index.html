@@ -242,7 +242,7 @@
   <div class="swiper-pagination"></div>
 </div>
 <button class="btn" onclick="document.getElementById('quick-order-modal').style.display='block'" style="margin-top: 20px; display: inline-block;">Купити в 1 клік</button>
-  <a href="#form" class="btn">Замовити зараз</a>
+  
 </section>
 
 <section class="features">
@@ -342,7 +342,7 @@
     <div style="background:white; padding:30px; max-width:400px; margin:80px auto; border-radius:12px; position:relative;">
       <span onclick="document.getElementById('quick-order-modal').style.display='none'" style="position:absolute; top:10px; right:20px; cursor:pointer; font-size:20px;">&times;</span>
       <h3>Купити в 1 клік</h3>
-      <form action="https://formsubmit.co/srp.2.com@gmail.com" method="POST">
+      <form action="https://formsubmit.co/srp.2.com@gmail.com" method="POST" onsubmit="return handleQuickOrder(event)">
         <input type="text" name="name" placeholder="Ваше ім'я" required style="width:100%; padding:10px; margin-bottom:12px;">
         <input type="tel" name="phone" placeholder="Телефон" required style="width:100%; padding:10px; margin-bottom:12px;">
         <button type="submit" class="btn" style="width:100%;">Відправити</button>
@@ -388,6 +388,19 @@
     alert('Дякуємо! Ваше замовлення надіслано. Ми скоро з вами зв’яжемось.');
     return true;
   }
+function handleQuickOrder(event) {
+  event.preventDefault();
+  const form = event.target;
+  const name = form.name.value.trim();
+  const phone = form.phone.value.trim();
+  if (!name || !phone) {
+    alert('Будь ласка, заповніть усі поля.');
+    return false;
+  }
+  alert('Дякуємо за покупку! З вами скоро зв’яжеться наш менеджер.');
+  form.submit();
+  return true;
+}
 </script>
 <script>
   const swiper = new Swiper('.mySwiper', {
