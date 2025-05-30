@@ -135,15 +135,6 @@
       margin-top: 20px;
     }
   </style>
-  <script>
-    function showThanks(event) {
-      event.preventDefault();
-      const form = event.target;
-      const message = document.getElementById('formSuccess');
-      form.style.display = 'none';
-      message.style.display = 'block';
-    }
-  </script>
 </head>
 <body>
 <header>
@@ -156,7 +147,7 @@
     <span class="new">3499₴</span>
   </div>
   <br />
-  <button class="btn">Замовити зараз</button>
+  <button class="btn" onclick="document.getElementById('quickOrder').scrollIntoView({ behavior: 'smooth' })">Купити в один клік</button>
 </section>
 <section class="gallery">
   <h2>Фото крісел</h2>
@@ -199,17 +190,13 @@
     </ul>
   </details>
 </section>
-<section class="form-section">
-  <h2>Оформити замовлення</h2>
-  <form onsubmit="showThanks(event)" action="#">
+<section class="form-section" id="quickOrder">
+  <h2>Купити в один клік</h2>
+  <form action="https://formspree.io/f/mnqedlgg" method="POST">
     <input type="text" name="name" placeholder="Ваше ім'я" required />
     <input type="tel" name="phone" placeholder="Телефон" required />
-    <select name="color" required>
-      <option value="">Оберіть колір</option>
-      <option value="green">Зелений</option>
-      <option value="white">Білий</option>
-      <option value="red">Червоний</option>
-    </select>
+    <input type="hidden" name="_subject" value="Нове замовлення з сайту" />
+    <input type="hidden" name="_cc" value="srp.2.com@gmail.com" />
     <button class="btn" type="submit">Відправити</button>
   </form>
   <div class="form-message" id="formSuccess">Дякуємо! З вами скоро зв’яжеться наш менеджер.</div>
