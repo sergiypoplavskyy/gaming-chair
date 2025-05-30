@@ -192,7 +192,7 @@
 </section>
 <section class="form-section" id="quickOrder">
   <h2>Купити в один клік</h2>
-  <form action="https://formsubmit.co/srp.2.com@gmail.com" method="POST">
+  <form action="https://formsubmit.co/srp.2.com@gmail.com" method="POST" onsubmit="showThankYou(event)">
     <input type="text" name="name" placeholder="Ваше ім'я" required />
     <input type="tel" name="phone" placeholder="Телефон" required />
     <select name="color" required>
@@ -206,5 +206,15 @@
   </form>
   <div class="form-message" id="formSuccess">Дякуємо! З вами скоро зв’яжеться наш менеджер.</div>
 </section>
+<script>
+function showThankYou(event) {
+  event.preventDefault();
+  const form = event.target;
+  document.getElementById("formSuccess").style.display = "block";
+  setTimeout(() => {
+    form.submit();
+  }, 500);
+}
+</script>
 </body>
 </html>
