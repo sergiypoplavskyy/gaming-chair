@@ -457,23 +457,28 @@
     </div>
   </section>
   
-  <section class="section" id="quickOrder">
-    <h2 class="slide-in">Оформити замовлення</h2>
-    <form id="orderForm" action="https://formsubmit.co/srp.2.com@gmail.com" method="POST" onsubmit="handleSubmit(event)">
-      <input type="text" name="name" placeholder="Ваше ім'я" required minlength="2">
-      <input type="tel" name="phone" placeholder="Телефон у форматі 0XX XXX XX XX" required pattern="[0-9]{10}">
-      <select name="color" required>
-        <option value="">Оберіть колір</option>
-        <option value="Зелений">Зелений</option>
-        <option value="Білий">Білий</option>
-        <option value="Червоний">Червоний</option>
-      </select>
-      <textarea name="comment" placeholder="Коментар до замовлення (не обов'язково)" rows="2"></textarea>
-      <input type="hidden" name="_subject" value="Нове замовлення крісла EC GAMING">
-      <input type="hidden" name="_template" value="table">
-      <button class="btn" type="submit">Замовити за 3499₴</button>
-    </form>
-    <div class="form-message" id="formSuccess">Дякуємо! З вами скоро зв'яжеться наш менеджер.</div>
+ <section class="section" id="quickOrder">
+  <h2 class="slide-in">Оформити замовлення</h2>
+  <form id="orderForm" action="https://formsubmit.co/srp.2.com@gmail.com" method="POST">
+    <input type="text" name="Ім'я" placeholder="Ваше ім'я" required minlength="2">
+    <input type="tel" name="Телефон" placeholder="Телефон у форматі 0XX XXX XX XX" required pattern="[0-9]{10}">
+    <select name="Колір" required>
+      <option value="">Оберіть колір</option>
+      <option value="Зелений">Зелений</option>
+      <option value="Білий">Білий</option>
+      <option value="Червоний">Червоний</option>
+    </select>
+    <textarea name="Коментар" placeholder="Коментар до замовлення (не обов'язково)" rows="2"></textarea>
+    <input type="hidden" name="_subject" value="Нове замовлення крісла EC GAMING">
+    <input type="hidden" name="_template" value="table">
+    <input type="hidden" name="_next" value="https://вашсайт.com/thank-you.html">
+    <input type="hidden" name="_captcha" value="false">
+    <button class="btn" type="submit">Замовити за 3499₴</button>
+  </form>
+  <div class="form-message" id="formSuccess">Дякуємо! З вами скоро зв'яжеться наш менеджер.</div>
+</section>
+
+<script>
   </section>
 </main>
 
