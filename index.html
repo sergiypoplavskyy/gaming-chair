@@ -618,22 +618,29 @@
     </section>
     
 <section class="section" id="quickOrder">
-  <h2 class="slide-in">Оформити замовлення</h2>
+  <h2>Оформити замовлення</h2>
   <form id="orderForm" class="enhanced-form" action="https://formsubmit.co/srp.2.com@gmail.com" method="POST">
+    <!-- Додайте hidden поле для відправки назви товару -->
+    <input type="hidden" name="_subject" value="Нове замовлення крісла EC GAMING">
+    <input type="hidden" name="_template" value="table">
+    <input type="hidden" name="_next" value="https://mogo.com.ua/thank-you.html"> 
+    <input type="hidden" name="_captcha" value="false">
+    <input type="hidden" name="product" value="Геймерське крісло EC GAMING">
+    
     <div class="form-group">
       <label for="name">Ваше ім'я:</label>
-      <input type="text" id="name" name="Ім'я" placeholder="Введіть ваше ім'я" required minlength="2">
+      <input type="text" id="name" name="name" required minlength="2">
     </div>
     
     <div class="form-group">
       <label for="phone">Телефон:</label>
-      <input type="tel" id="phone" name="Телефон" placeholder="0XX XXX XX XX" required pattern="[0-9]{10}">
-      <div class="input-hint">Наприклад: 0671234567</div>
+      <input type="tel" id="phone" name="phone" required pattern="[0-9]{10}">
+      <div class="input-hint">Формат: 0671234567</div>
     </div>
     
     <div class="form-group">
-      <label for="color">Колір крісла:</label>
-      <select id="color" name="Колір" required>
+      <label for="color">Колір:</label>
+      <select id="color" name="color" required>
         <option value="">Оберіть колір</option>
         <option value="Зелений">Зелений</option>
         <option value="Білий">Білий</option>
@@ -642,21 +649,102 @@
     </div>
     
     <div class="form-group">
-      <label for="comment">Коментар (не обов'язково):</label>
-      <textarea id="comment" name="Коментар" rows="3" placeholder="Ваші побажання..."></textarea>
+      <label for="comment">Коментар:</label>
+      <textarea id="comment" name="comment" rows="3"></textarea>
     </div>
     
-    <input type="hidden" name="_subject" value="Нове замовлення крісла EC GAMING">
-    <input type="hidden" name="_template" value="table">
-    <input type="hidden" name="_next" value="https://mogo.com.ua/thank-you.html">
-    <input type="hidden" name="_captcha" value="false">
-    
     <button type="submit" class="btn pulse-btn">
-      <span>Підтвердити замовлення</span>
+      <span>Замовити</span>
       <span class="btn-icon">→</span>
     </button>
+    
+    <!-- Повідомлення про успіх (спочатку приховане) -->
+    <div id="formSuccess" style="display: none; margin-top: 1rem; padding: 1rem; background: rgba(0,255,0,0.1); border: 1px solid green; border-radius: 5px;">
+      Дякуємо! Ваше замовлення прийнято. Ми зв'яжемося з вами найближчим часом.
+    </div>
   </form>
 </section>
+
+<style>
+  /* Додайте ці стилі до вашого CSS */
+  .enhanced-form select,
+  .enhanced-form textarea {
+    width: 100%;
+    padding: 12px 15px;
+    background: rgba(255,255,255,0.1);
+    border: 1px solid var(--primary-color);
+    border-radius: 8px;
+    color: white;
+    font-size: 16px;
+    margin-bottom: 10px;
+  }
+  
+  .enhanced-form textarea {
+    min-height: 100px;
+    resize: vertical;
+  }
+  
+  select:focus,
+  input:focus,
+  textarea:focus {
+    outline: none;
+    box-shadow: 0 0 5px var(--primary-color);
+  }
+</style>
+
+<script>
+  // Обробник форми
+  document.getElementById('orderForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const form = this;
+    
+    // Валідація телефону
+    const phone = form.querySelector('[name="phone"]').value.replace(/\D/g, '');
+    if (phone.length !== 10) {
+      alert('Будь ласка, введіть коректний номер телефону (10 цифр)');
+      return;
+    }
+    
+    // Відображення завантаження
+    const submitBtn = form.querySelector('button[type="submit"]');
+    submitBtn.disabled = true;
+    submitBtn.innerHTML = '<span>Відправка...</span>';
+    
+    // Справжня відправка форми
+    fetch(form.action, {
+      method: 'POST',
+      body: new FormData(form),
+    })
+    .then(response => {
+      if (response.ok) {
+        // Показати повідомлення про успіх
+        document.getElementById('formSuccess').style.display = 'block';
+        form.reset();
+        
+        // Прокрутити до повідомлення
+        document.getElementById('formSuccess').scrollIntoView({
+          behavior: 'smooth'
+        });
+      } else {
+        throw new Error('Помилка відправки');
+      }
+    })
+    .catch(error => {
+      alert('Сталася помилка при відправці. Будь ласка, спробуйте ще раз або зв\'яжіться з нами іншим способом.');
+      console.error('Помилка форми:', error);
+    })
+    .finally(() => {
+      submitBtn.disabled = false;
+      submitBtn.innerHTML = '<span>Замовити</span><span class="btn-icon">→</span>';
+    });
+  });
+
+  // Маска для телефону
+  document.getElementById('phone').addEventListener('input', function(e) {
+    let x = e.target.value.replace(/\D/g, '').match(/(\d{0,3})(\d{0,3})(\d{0,2})(\d{0,2})/);
+    e.target.value = !x[2] ? x[1] : x[1] + ' ' + x[2] + (x[3] ? ' ' + x[3] : '') + (x[4] ? ' ' + x[4] : '');
+  });
+</script>
   </main>
 
   <script>
