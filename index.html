@@ -69,21 +69,43 @@
     .gallery h2 {
       margin-bottom: 20px;
     }
-    .gallery-images {
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 20px;
+    .gallery-wrapper {
+      position: relative;
+      overflow: hidden;
     }
-    .gallery-images img {
+    .gallery-carousel {
+      display: flex;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+      gap: 20px;
+      padding: 10px;
+    }
+    .gallery-carousel img {
       max-width: 300px;
       border-radius: 10px;
       box-shadow: 0 6px 16px rgba(0,0,0,0.1);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      scroll-snap-align: center;
+      flex-shrink: 0;
     }
-    .gallery-images img:hover {
-      transform: scale(1.06);
-      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    .gallery-nav {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      padding: 0 10px;
+    }
+    .gallery-nav button {
+      background: rgba(0,0,0,0.5);
+      color: white;
+      border: none;
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      cursor: pointer;
+      font-size: 1.2em;
     }
     .features {
       padding: 20px;
@@ -108,6 +130,17 @@
       padding-left: 20px;
       margin-top: 10px;
       text-align: left;
+    }
+    .reviews-list li {
+      background: white;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.06);
+      margin: 10px auto;
+      max-width: 700px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
     }
     .form-section {
       background: white;
@@ -151,12 +184,25 @@
 </section>
 <section class="gallery">
   <h2>Фото крісел</h2>
-  <div class="gallery-images">
-    <img src="біле.png" alt="Крісло біле" />
-    <img src="зелене.png" alt="Крісло зелене" />
-    <img src="червоне.png" alt="Крісло червоне" />
+  <div class="gallery-wrapper">
+    <div class="gallery-carousel" id="carousel">
+      <img src="біле.png" alt="Крісло біле" />
+      <img src="зелене.png" alt="Крісло зелене" />
+      <img src="червоне.png" alt="Крісло червоне" />
+    </div>
+    <div class="gallery-nav">
+      <button onclick="scrollGallery(-1)">&#8592;</button>
+      <button onclick="scrollGallery(1)">&#8594;</button>
+    </div>
   </div>
 </section>
+<script>
+  function scrollGallery(direction) {
+    const carousel = document.getElementById('carousel');
+    const scrollAmount = 320;
+    carousel.scrollBy({ left: scrollAmount * direction, behavior: 'smooth' });
+  }
+</script>
 <section class="features">
   <details>
     <summary>Переваги</summary>
