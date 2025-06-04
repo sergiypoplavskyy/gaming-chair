@@ -336,6 +336,51 @@
     <h2 class="visually-hidden">Опис товару</h2>
     <p>Комфортне, стильне та функціональне крісло для геймерів і офісних працівників. Масажна подушка, регулювання нахилу, 3 кольори на вибір.</p>
   
+<!-- Додамо інтерактивний банер зі знижкою -->
+<div class="discount-banner">
+  <div class="discount-pulse"></div>
+  <span>🔥 АКЦІЯ! -20% ТІЛЬКИ СЬОГОДНІ</span>
+</div>
+
+<style>
+  .discount-banner {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: linear-gradient(45deg, #ff0000, #ff6b00);
+    color: white;
+    padding: 12px 20px;
+    border-radius: 30px;
+    font-weight: bold;
+    z-index: 1000;
+    box-shadow: 0 0 15px rgba(255,0,0,0.7);
+    animation: pulse 2s infinite;
+  }
+  
+  @keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+  }
+  
+  .discount-pulse {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: rgba(255,255,255,0.4);
+    border-radius: 30px;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    animation: pulse-ring 2s infinite;
+  }
+  
+  @keyframes pulse-ring {
+    0% { transform: scale(0.8); opacity: 1; }
+    100% { transform: scale(1.3); opacity: 0; }
+  }
+</style>
+
   <section class="section gallery">
     <h2>Фото крісел</h2>
     <div class="gallery-wrapper">
