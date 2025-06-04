@@ -49,6 +49,7 @@
       --bg-dark: #0f0c29;
       --text-light: #eee;
       --text-gray: #999;
+      --accent-color: #ff3e00;
     }
     
     * {
@@ -66,6 +67,7 @@
       animation: neonGradient 15s ease infinite;
       color: var(--text-light);
       min-height: 100vh;
+      padding-top: 80px; /* Відступ для фіксованого хедера */
     }
     
     @keyframes neonGradient {
@@ -80,9 +82,15 @@
       color: white;
       padding: 1.5rem 1rem;
       text-align: center;
-      box-shadow: 0 0 20px var(--secondary-color);
-      position: relative;
-      overflow: hidden;
+      box-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
     
     header h1 {
@@ -95,17 +103,24 @@
 
     /* Контактна панель */
     .contact-bar {
-      background: rgba(0,0,0,0.7);
-      padding: 8px 0;
+      background: rgba(0,0,0,0.85);
+      padding: 12px 0;
       text-align: center;
       border-bottom: 1px solid var(--primary-color);
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1001;
+      backdrop-filter: blur(5px);
     }
     
     .contact-links {
       display: flex;
       justify-content: center;
-      gap: 20px;
+      gap: 30px;
       flex-wrap: wrap;
+      padding: 0 15px;
     }
     
     .contact-link {
@@ -113,34 +128,60 @@
       text-decoration: none;
       display: flex;
       align-items: center;
-      gap: 5px;
+      gap: 8px;
       transition: all 0.3s;
+      font-size: 1.1rem;
+      font-weight: 500;
+      padding: 5px 10px;
+      border-radius: 8px;
+      background: rgba(255,255,255,0.1);
     }
     
     .contact-link:hover {
       color: var(--primary-color);
       text-shadow: 0 0 5px var(--primary-color);
+      background: rgba(0,255,255,0.2);
+      transform: translateY(-2px);
     }
     
     .contact-link .icon {
-      font-size: 1.2em;
+      font-size: 1.3em;
     }
     
     /* Стилі для футера */
     footer {
-      background: linear-gradient(90deg, var(--secondary-color), #0575e6);
+      background: rgba(0,0,0,0.9);
       color: white;
-      padding: 2rem 1rem;
+      padding: 2.5rem 1rem;
       text-align: center;
       margin-top: 3rem;
+      border-top: 1px solid var(--primary-color);
     }
     
     .footer-links {
       display: flex;
       justify-content: center;
-      gap: 30px;
-      margin: 1.5rem 0;
+      gap: 40px;
+      margin: 2rem 0;
       flex-wrap: wrap;
+    }
+    
+    .footer-link {
+      color: white;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 1.1rem;
+      padding: 8px 15px;
+      border-radius: 8px;
+      transition: all 0.3s;
+      background: rgba(255,255,255,0.1);
+    }
+    
+    .footer-link:hover {
+      background: rgba(0,255,255,0.3);
+      color: var(--primary-color);
     }
     
     /* Секції */
@@ -157,22 +198,22 @@
     /* Банер зі знижкою */
     .discount-banner {
       position: fixed;
-      top: 20px;
+      top: -100px;
       right: 20px;
       background: linear-gradient(45deg, #ff0000, #ff6b00);
       color: white;
-      padding: 12px 20px;
+      padding: 12px 25px;
       border-radius: 30px;
       font-weight: bold;
       z-index: 1000;
       box-shadow: 0 0 15px rgba(255,0,0,0.7);
-      animation: pulse 2s infinite;
+      transition: all 0.5s ease;
+      opacity: 0;
     }
     
-    @keyframes pulse {
-      0% { transform: scale(1); }
-      50% { transform: scale(1.05); }
-      100% { transform: scale(1); }
+    .discount-banner.visible {
+      top: 100px;
+      opacity: 1;
     }
     
     .discount-pulse {
@@ -468,8 +509,58 @@
       text-align: center;
     }
     
+    /* Анімації */
+    .slide-in {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.6s ease-out;
+    }
+    
+    .slide-in.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    
+    .fade-in {
+      animation: fadeIn 1s ease-in;
+    }
+    
+    /* Додаткові стилі для форми */
+    .enhanced-form select,
+    .enhanced-form textarea {
+      width: 100%;
+      padding: 12px 15px;
+      background: rgba(255,255,255,0.1);
+      border: 1px solid var(--primary-color);
+      border-radius: 8px;
+      color: white;
+      font-size: 16px;
+      margin-bottom: 10px;
+    }
+    
+    .enhanced-form textarea {
+      min-height: 100px;
+      resize: vertical;
+    }
+    
+    select:focus,
+    input:focus,
+    textarea:focus {
+      outline: none;
+      box-shadow: 0 0 5px var(--primary-color);
+    }
+    
     /* Адаптація */
     @media (max-width: 768px) {
+      body {
+        padding-top: 120px; /* Більший відступ для мобільних */
+      }
+      
       .section {
         padding: 1.5rem 1rem;
         margin: 1rem;
@@ -513,16 +604,6 @@
   </style>
 </head>
 <body>
-  <!-- Банер зі знижкою -->
-  <div class="discount-banner">
-    <div class="discount-pulse"></div>
-    <span>🔥 АКЦІЯ! -20% ТІЛЬКИ СЬОГОДНІ</span>
-  </div>
-
-  <header>
-    <h1>Геймерське крісло EC GAMING</h1>
-  </header>
-
   <!-- Контактна панель -->
   <div class="contact-bar">
     <div class="contact-links">
@@ -534,8 +615,22 @@
         <span class="icon">📷</span>
         <span>Instagram</span>
       </a>
+      <a href="mailto:info@mogo.com.ua" class="contact-link">
+        <span class="icon">✉️</span>
+        <span>info@mogo.com.ua</span>
+      </a>
     </div>
   </div>
+
+  <!-- Банер зі знижкою -->
+  <div class="discount-banner" id="discountBanner">
+    <div class="discount-pulse"></div>
+    <span>🔥 АКЦІЯ! -20% ТІЛЬКИ СЬОГОДНІ</span>
+  </div>
+
+  <header>
+    <h1>Геймерське крісло EC GAMING</h1>
+  </header>
 
   <main>
     <section class="section hero">
@@ -737,48 +832,21 @@
         </div>
       </form>
     </section>
-
-    <style>
-      /* Додайте ці стилі до вашого CSS */
-      .enhanced-form select,
-      .enhanced-form textarea {
-        width: 100%;
-        padding: 12px 15px;
-        background: rgba(255,255,255,0.1);
-        border: 1px solid var(--primary-color);
-        border-radius: 8px;
-        color: white;
-        font-size: 16px;
-        margin-bottom: 10px;
-      }
-      
-      .enhanced-form textarea {
-        min-height: 100px;
-        resize: vertical;
-      }
-      
-      select:focus,
-      input:focus,
-      textarea:focus {
-        outline: none;
-        box-shadow: 0 0 5px var(--primary-color);
-      }
-    </style>
   </main>
 
   <!-- Футер -->
   <footer>
     <h3>EC GAMING - геймерські крісла</h3>
     <div class="footer-links">
-      <a href="tel:+380734597007" class="contact-link">
+      <a href="tel:+380734597007" class="footer-link">
         <span class="icon">📞</span>
         <span>+38 (073) 459-70-07</span>
       </a>
-      <a href="https://instagram.com/ваш_instagram" target="_blank" class="contact-link">
+      <a href="https://instagram.com/ваш_instagram" target="_blank" class="footer-link">
         <span class="icon">📷</span>
         <span>Наш Instagram</span>
       </a>
-      <a href="mailto:info@mogo.com.ua" class="contact-link">
+      <a href="mailto:info@mogo.com.ua" class="footer-link">
         <span class="icon">✉️</span>
         <span>info@mogo.com.ua</span>
       </a>
@@ -788,6 +856,17 @@
 
   <script>
     document.addEventListener('DOMContentLoaded', function() {
+      // Показуємо банер знижки при скролі
+      const discountBanner = document.getElementById('discountBanner');
+      
+      window.addEventListener('scroll', function() {
+        if (window.scrollY > 200) {
+          discountBanner.classList.add('visible');
+        } else {
+          discountBanner.classList.remove('visible');
+        }
+      });
+
       // Ініціалізація анімацій
       const elements = document.querySelectorAll('.slide-in');
       elements.forEach(el => el.classList.add('slide-in'));
@@ -801,6 +880,9 @@
       
       // Ініціалізація вибору кольору
       initColorSelector();
+      
+      // Запускаємо анімації при завантаженні
+      animateOnScroll();
     });
 
     // Галерея з прев'ю
@@ -857,145 +939,85 @@
       const timer = setInterval(() => {
         const hours = Math.floor(time / 3600);
         const minutes = Math.floor((time % 3600) / 60);
-        const seconds = time % 60;
-        
-        countdownElement.textContent = 
-          `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
-        
-        if (time-- <= 0) clearInterval(timer);
-      }, 1000);
+        const seconds =    countdownElement.textContent = `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+    
+    if (time <= 0) {
+      clearInterval(timer);
+      countdownElement.textContent = "Акція закінчилась!";
+    } else {
+      time--;
     }
+  }, 1000);
+}
 
-    // Лічильник залишку товару
-    function updateStockCounter() {
-      const counter = document.getElementById('stock-counter');
-      let stock = 5;
+// Лічильник залишку товару
+function updateStockCounter() {
+  const stockElement = document.getElementById('stock-counter');
+  let stock = 5;
+  
+  // Симулюємо купівлю кожні 30-90 секунд
+  setInterval(() => {
+    if (stock > 0 && Math.random() > 0.7) {
+      stock--;
+      stockElement.textContent = stock;
       
-      setInterval(() => {
-        if (stock > 0 && Math.random() > 0.7) {
-          stock--;
-          counter.textContent = stock;
-          
-          if (stock === 0) {
-            document.querySelector('.discount-counter').innerHTML = 
-              '<p>🔴 Знижка закінчилась! Новий надходження очікується через 3 дні.</p>';
-          }
-        }
-      }, 120000 + Math.random() * 180000);
-    }
-
-    // Обробник форми
-    document.getElementById('orderForm').addEventListener('submit', function(e) {
-      e.preventDefault();
-      const form = this;
-      
-      // Валідація телефону
-      const phone = form.querySelector('[name="phone"]').value.replace(/\D/g, '');
-      if (phone.length !== 10) {
-        alert('Будь ласка, введіть коректний номер телефону (10 цифр)');
-        return;
+      if (stock <= 2) {
+        stockElement.style.color = 'red';
+        stockElement.style.fontWeight = 'bold';
       }
-      
-      // Відображення завантаження
-      const submitBtn = form.querySelector('button[type="submit"]');
-      submitBtn.disabled = true;
-      submitBtn.innerHTML = '<span>Відправка...</span>';
-      
-      // Справжня відправка форми
-      fetch(form.action, {
-        method: 'POST',
-        body: new FormData(form),
-        headers: {
-          'Accept': 'application/json'
-        }
-      })
-      .then(response => {
-        if (response.ok) {
-          // Показати повідомлення про успіх
-          document.getElementById('formSuccess').style.display = 'block';
-          form.reset();
-          
-          // Прокрутити до повідомлення
-          document.getElementById('formSuccess').scrollIntoView({
-            behavior: 'smooth'
-          });
-          
-          // Перенаправлення на сторінку подяки (якщо потрібно)
-          // window.location.href = 'https://yourwebsite.com/thank-you.html';
-        } else {
-          throw new Error('Помилка відправки');
-        }
-      })
-            .catch(error => {
-        alert('Сталася помилка при відправці. Будь ласка, спробуйте ще раз або зв\'яжіться з нами по телефону.');
-        console.error('Помилка відправки форми:', error);
-      })
-      .finally(() => {
-        submitBtn.disabled = false;
-        submitBtn.innerHTML = '<span>Замовити</span><span class="btn-icon">→</span>';
-      });
+    }
+  }, 30000 + Math.random() * 60000);
+}
+
+// Анімація при скролі
+function animateOnScroll() {
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('active');
+      }
     });
+  }, { threshold: 0.1 });
+  
+  document.querySelectorAll('.slide-in').forEach(el => observer.observe(el));
+}
 
-    // Маска для телефону
-    document.getElementById('phone').addEventListener('input', function(e) {
-      let x = this.value.replace(/\D/g, '').match(/(\d{0,3})(\d{0,3})(\d{0,2})(\d{0,2})/);
-      this.value = !x[2] ? x[1] : x[1] + ' ' + x[2] + (x[3] ? ' ' + x[3] : '') + (x[4] ? ' ' + x[4] : '');
-    });
-
-    // Плавна прокрутка для всіх якорних посилань
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function(e) {
-        e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        if (target) {
-          target.scrollIntoView({
-            behavior: 'smooth'
-          });
-        }
-      });
-    });
-
-    // Анімація при скролі
-    function animateOnScroll() {
-      const elements = document.querySelectorAll('.slide-in');
-      elements.forEach(element => {
-        const elementPosition = element.getBoundingClientRect().top;
-        const screenPosition = window.innerHeight / 1.3;
-        
-        if (elementPosition < screenPosition) {
-          element.style.opacity = '1';
-          element.style.transform = 'translateY(0)';
-        }
-      });
-    }
-
-    // Додаємо обробник скролу
-    window.addEventListener('scroll', animateOnScroll);
-    // Запускаємо один раз при завантаженні
-    animateOnScroll();
-  </script>
-
-  <!-- Додаткові стилі для анімацій -->
-  <style>
-    .slide-in {
-      opacity: 0;
-      transform: translateY(30px);
-      transition: all 0.6s ease-out;
-    }
+// Обробка форми
+document.getElementById('orderForm').addEventListener('submit', function(e) {
+  e.preventDefault();
+  
+  // Симулюємо відправку форми
+  setTimeout(() => {
+    document.getElementById('formSuccess').style.display = 'block';
+    this.reset();
     
-    .slide-in.active {
-      opacity: 1;
-      transform: translateY(0);
-    }
+    // Плавно скролимо до повідомлення про успіх
+    document.getElementById('formSuccess').scrollIntoView({ behavior: 'smooth' });
     
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
-    }
-    
-    .fade-in {
-      animation: fadeIn 1s ease-in;
-    }
-  </style>
-</body>
+    // Ховаємо повідомлення через 5 секунд
+    setTimeout(() => {
+      document.getElementById('formSuccess').style.display = 'none';
+    }, 5000);
+  }, 1000);
+  
+  // Тут можна додати реальну відправку форми через fetch()
+  // fetch(this.action, { method: 'POST', body: new FormData(this) })
+  //   .then(response => { ... })
+  //   .catch(error => { ... });
+});
+
+// Валідація телефону
+document.getElementById('phone').addEventListener('input', function(e) {
+  let value = this.value.replace(/\D/g, '');
+  
+  if (value.length > 2) value = value.substring(0, 3) + ' ' + value.substring(3);
+  if (value.length > 7) value = value.substring(0, 7) + ' ' + value.substring(7);
+  if (value.length > 10) value = value.substring(0, 10) + ' ' + value.substring(10);
+  if (value.length > 13) value = value.substring(0, 13);
+  
+  this.value = value;
+});
+
+</script> 
+</body> 
 </html>
