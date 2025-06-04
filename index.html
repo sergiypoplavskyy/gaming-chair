@@ -117,6 +117,7 @@
       box-shadow: 0 0 12px var(--primary-color);
       display: inline-block;
       text-align: center;
+      width: 100%;
     }
     
     .price-tag span.old {
@@ -141,11 +142,12 @@
       font-size: 1rem;
       font-weight: 600;
       cursor: pointer;
-      margin-top: 1rem;
+      margin: 1rem auto 0;
       box-shadow: 0 0 10px var(--primary-color);
       transition: all 0.3s ease;
-      display: inline-block;
+      display: block;
       text-align: center;
+      width: fit-content;
     }
     
     .btn:hover {
@@ -274,6 +276,29 @@
       text-align: center;
     }
     
+    /* Характеристики */
+    .features-grid {
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    
+    .features-grid details {
+      margin-bottom: 1rem;
+    }
+    
+    .features-grid summary {
+      font-weight: bold;
+      cursor: pointer;
+      padding: 0.5rem;
+      background: rgba(0, 255, 255, 0.1);
+      border-radius: 6px;
+    }
+    
+    .features-grid ul {
+      padding-left: 1.5rem;
+      margin-top: 0.5rem;
+    }
+    
     /* Медіа-запити для адаптації */
     @media (max-width: 768px) {
       .section {
@@ -311,7 +336,7 @@
     <h2 class="visually-hidden">Опис товару</h2>
     <p>Комфортне, стильне та функціональне крісло для геймерів і офісних працівників. Масажна подушка, регулювання нахилу, 3 кольори на вибір.</p>
     
-    <div class="price-tag">
+    <div class="price-tag" style="text-align: center;">
       <span class="old">4199₴</span>
       <span class="new">3499₴</span>
     </div>
@@ -321,7 +346,7 @@
       <p>Залишилось: <span id="stock-counter">5</span> шт. за цією ціною</p>
     </div>
     
-    <button class="btn" onclick="document.getElementById('quickOrder').scrollIntoView({ behavior: 'smooth' })">
+    <button class="btn" onclick="document.getElementById('quickOrder').scrollIntoView({ behavior: 'smooth' })" style="margin: 0 auto;">
       Купити в один клік
     </button>
   </section>
@@ -339,6 +364,15 @@
         <button onclick="scrollGallery(1)" aria-label="Наступне фото">&#8594;</button>
       </div>
     </div>
+    
+    <div class="price-tag" style="text-align: center; margin-top: 2rem;">
+      <span class="old">4199₴</span>
+      <span class="new">3499₴</span>
+    </div>
+    
+    <button class="btn" onclick="document.getElementById('quickOrder').scrollIntoView({ behavior: 'smooth' })" style="margin: 1rem auto 0;">
+      Купити в один клік
+    </button>
   </section>
   
   <section class="section features">
