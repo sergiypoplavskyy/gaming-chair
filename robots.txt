@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://mogo.com.ua/sitemap.xml
