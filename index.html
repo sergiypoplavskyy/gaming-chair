@@ -72,6 +72,8 @@
     .gallery-wrapper {
       position: relative;
       overflow: hidden;
+      max-width: 100%;
+      margin: 0 auto;
     }
     .gallery-carousel {
       display: flex;
@@ -96,6 +98,8 @@
       display: flex;
       justify-content: space-between;
       padding: 0 10px;
+      z-index: 10;
+      pointer-events: none;
     }
     .gallery-nav button {
       background: rgba(0,0,0,0.5);
@@ -106,6 +110,7 @@
       height: 40px;
       cursor: pointer;
       font-size: 1.2em;
+      pointer-events: all;
     }
     .features {
       padding: 20px;
@@ -203,6 +208,7 @@
     carousel.scrollBy({ left: scrollAmount * direction, behavior: 'smooth' });
   }
 </script>
+
 <section class="features">
   <details>
     <summary>Переваги</summary>
