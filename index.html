@@ -479,6 +479,30 @@
 </section>
 
 <script>
+  // Додаємо обробник події для форми
+  document.getElementById('orderForm').addEventListener('submit', handleSubmit);
+
+  function handleSubmit(event) {
+    event.preventDefault();
+    const form = event.target;
+    const successMessage = document.getElementById('formSuccess');
+    
+    // Валідація телефону (тепер з правильним ім'ям поля)
+    const phoneInput = form.querySelector('input[name="Телефон"]');
+    if (!/^[0-9]{10}$/.test(phoneInput.value.replace(/\D/g, ''))) {
+      alert('Будь ласка, введіть коректний номер телефону (10 цифр)');
+      return;
+    }
+    
+    // Показати повідомлення про успіх
+    successMessage.style.display = 'block';
+    
+    // Відправити форму
+    setTimeout(() => {
+      form.submit();
+    }, 1500);
+  }
+</script>
 </main>
 
 <script>
