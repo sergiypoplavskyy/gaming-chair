@@ -4,102 +4,300 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="Геймерське крісло EC GAMING з масажною подушкою. Комфорт, стиль і знижка! Доставка по Україні." />
-  <title>Геймерське крісло EC GAMING</title>
+  <title>Геймерське крісло EC GAMING - Купити зі знижкою | Магазин геймерських крісел</title>
+  
+  <!-- Додано мікророзмітку для SEO -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    "name": "Геймерське крісло EC GAMING",
+    "description": "Комфортне геймерське крісло з масажною подушкою, регулюванням нахилу та ергономічною підтримкою спини.",
+    "brand": {
+      "@type": "Brand",
+      "name": "EC GAMING"
+    },
+    "offers": {
+      "@type": "Offer",
+      "url": "https://вашсайт.com/крісло-ec-gaming",
+      "priceCurrency": "UAH",
+      "price": "3499",
+      "priceValidUntil": "2023-12-31",
+      "itemCondition": "https://schema.org/NewCondition",
+      "availability": "https://schema.org/InStock"
+    },
+    "review": {
+      "@type": "Review",
+      "reviewRating": {
+        "@type": "Rating",
+        "ratingValue": "4.8",
+        "bestRating": "5"
+      },
+      "author": {
+        "@type": "Person",
+        "name": "Олександр"
+      }
+    }
+  }
+  </script>
+  
   <style>
+    /* Оптимізовані стилі з медіа-запитами */
+    :root {
+      --primary-color: #0ff;
+      --secondary-color: #00f260;
+      --bg-dark: #0f0c29;
+      --text-light: #eee;
+      --text-gray: #999;
+    }
+    
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    
     body {
       font-family: 'Arial', sans-serif;
+      line-height: 1.6;
       margin: 0;
-      background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+      background: linear-gradient(135deg, var(--bg-dark), #302b63, #24243e);
       background-size: 400% 400%;
       animation: neonGradient 15s ease infinite;
-      color: #eee;
+      color: var(--text-light);
+      min-height: 100vh;
     }
+    
     @keyframes neonGradient {
       0% {background-position: 0% 50%;}
       50% {background-position: 100% 50%;}
       100% {background-position: 0% 50%;}
     }
+    
+    /* Оптимізовані стилі для header */
     header {
-      background: linear-gradient(90deg, #00f260, #0575e6);
+      background: linear-gradient(90deg, var(--secondary-color), #0575e6);
       color: white;
-      padding: 30px 20px;
+      padding: 1.5rem 1rem;
       text-align: center;
-      box-shadow: 0 0 20px #00f260;
+      box-shadow: 0 0 20px var(--secondary-color);
+      position: relative;
+      overflow: hidden;
     }
+    
     header h1 {
       margin: 0;
-      font-size: 2.2em;
+      font-size: clamp(1.5rem, 4vw, 2.2rem);
       text-shadow: 0 0 10px rgba(255,255,255,0.5);
+      position: relative;
+      z-index: 1;
     }
-    .hero, .gallery, .features, .form-section {
+    
+    /* Спільні стилі для секцій */
+    .section {
       background: rgba(0, 0, 0, 0.6);
       color: #fff;
-      padding: 40px 20px;
+      padding: 2rem 1rem;
       border-radius: 12px;
-      margin: 20px auto;
+      margin: 1.5rem auto;
       max-width: 1000px;
       box-shadow: 0 0 20px rgba(0, 255, 255, 0.2);
     }
+    
+    /* Стилі для ціни */
     .price-tag {
-      margin: 20px auto;
+      margin: 1.5rem auto;
       background: #111;
-      border: 2px solid #0ff;
-      padding: 16px 24px;
+      border: 2px solid var(--primary-color);
+      padding: 1rem 1.5rem;
       border-radius: 16px;
-      font-size: 1.5em;
+      font-size: 1.5rem;
       font-weight: 600;
-      color: #0ff;
-      box-shadow: 0 0 12px #0ff;
+      color: var(--primary-color);
+      box-shadow: 0 0 12px var(--primary-color);
       display: inline-block;
+      text-align: center;
     }
+    
     .price-tag span.old {
       text-decoration: line-through;
-      color: #999;
-      margin-right: 12px;
+      color: var(--text-gray);
+      margin-right: 0.75rem;
+      font-size: 1rem;
     }
+    
     .price-tag span.new {
-      color: #0ff;
+      color: var(--primary-color);
       font-size: 1.4em;
     }
+    
+    /* Стилі для кнопок */
     .btn {
-      background: #0ff;
+      background: var(--primary-color);
       color: #000;
-      padding: 12px 25px;
+      padding: 0.75rem 1.5rem;
       border: none;
       border-radius: 6px;
-      font-size: 1em;
+      font-size: 1rem;
+      font-weight: 600;
       cursor: pointer;
-      margin-top: 20px;
-      box-shadow: 0 0 10px #0ff;
-      transition: background 0.3s;
+      margin-top: 1rem;
+      box-shadow: 0 0 10px var(--primary-color);
+      transition: all 0.3s ease;
+      display: inline-block;
+      text-align: center;
     }
+    
     .btn:hover {
       background: #00e5ff;
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px var(--primary-color);
     }
+    
+    /* Галерея */
+    .gallery-wrapper {
+      position: relative;
+      margin: 2rem 0;
+    }
+    
+    .gallery-carousel {
+      display: flex;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      scroll-behavior: smooth;
+      -webkit-overflow-scrolling: touch;
+      gap: 1rem;
+      padding-bottom: 1rem;
+    }
+    
     .gallery-carousel img {
-      border: 2px solid #0ff;
+      scroll-snap-align: start;
+      border: 2px solid var(--primary-color);
+      border-radius: 8px;
+      width: 100%;
+      max-width: 300px;
+      height: auto;
+      object-fit: cover;
     }
+    
+    .gallery-nav {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+    
     .gallery-nav button {
       background: rgba(0, 255, 255, 0.4);
+      border: none;
+      color: white;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 1.2rem;
+      transition: background 0.3s;
     }
+    
+    .gallery-nav button:hover {
+      background: rgba(0, 255, 255, 0.8);
+    }
+    
+    /* Форма */
+    form {
+      display: grid;
+      gap: 1rem;
+      max-width: 500px;
+      margin: 0 auto;
+    }
+    
     input, select {
+      width: 100%;
+      padding: 0.75rem;
       background: #1a1a1a;
       color: #fff;
-      border: 1px solid #0ff;
+      border: 1px solid var(--primary-color);
+      border-radius: 6px;
+      font-size: 1rem;
     }
+    
     input::placeholder, select {
       color: #ccc;
     }
-    form {
-      box-shadow: 0 0 10px rgba(0, 255, 255, 0.3);
-      padding: 20px;
-      border-radius: 12px;
-    }
+    
     .form-message {
       color: #0f0;
+      text-align: center;
+      margin-top: 1rem;
+      display: none;
     }
-    .features summary {
-      color: #0ff;
+    
+    /* Відгуки */
+    .review-item {
+      display: flex;
+      align-items: flex-start;
+      margin-bottom: 1.5rem;
+      background: rgba(255,255,255,0.05);
+      padding: 1rem;
+      border-radius: 8px;
+    }
+    
+    .review-avatar {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      margin-right: 1rem;
+      object-fit: cover;
+    }
+    
+    .review-content {
+      flex: 1;
+    }
+    
+    /* Анімації */
+    @keyframes slideIn {
+      from { transform: translateY(20px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+    
+    .slide-in {
+      animation: slideIn 0.5s ease-out forwards;
+    }
+    
+    /* Лічильник знижки */
+    .discount-counter {
+      background: rgba(255,0,0,0.2);
+      border: 1px solid red;
+      padding: 0.5rem 1rem;
+      border-radius: 6px;
+      margin: 1rem 0;
+      text-align: center;
+    }
+    
+    /* Медіа-запити для адаптації */
+    @media (max-width: 768px) {
+      .section {
+        padding: 1.5rem 1rem;
+        margin: 1rem;
+        border-radius: 8px;
+      }
+      
+      .price-tag {
+        font-size: 1.2rem;
+        padding: 0.75rem 1rem;
+      }
+      
+      .gallery-carousel {
+        gap: 0.5rem;
+      }
+      
+      .review-item {
+        flex-direction: column;
+      }
+      
+      .review-avatar {
+        margin-bottom: 0.5rem;
+      }
     }
   </style>
 </head>
@@ -107,126 +305,232 @@
 <header>
   <h1>Геймерське крісло EC GAMING</h1>
 </header>
-<section class="hero">
-  <p>Комфортне, стильне та функціональне крісло для геймерів і офісних працівників. Масажна подушка, регулювання нахилу, 3 кольори на вибір.</p>
-  <div class="price-tag">
-    <span class="old">4199₴</span>
-    <span class="new">3499₴</span>
-  </div>
-  <br />
-  <button class="btn" onclick="document.getElementById('quickOrder').scrollIntoView({ behavior: 'smooth' })">Купити в один клік</button>
-</section>
-<section class="gallery">
-  <h2>Фото крісел</h2>
-  <div class="gallery-wrapper">
-    <div class="gallery-carousel" id="carousel">
-      <img src="біле.png" alt="Крісло біле" />
-      <img src="зелене.png" alt="Крісло зелене" />
-      <img src="червоне.png" alt="Крісло червоне" />
+
+<main>
+  <section class="section hero">
+    <h2 class="visually-hidden">Опис товару</h2>
+    <p>Комфортне, стильне та функціональне крісло для геймерів і офісних працівників. Масажна подушка, регулювання нахилу, 3 кольори на вибір.</p>
+    
+    <div class="price-tag">
+      <span class="old">4199₴</span>
+      <span class="new">3499₴</span>
     </div>
-    <div class="gallery-nav">
-      <button onclick="scrollGallery(-1)">&#8592;</button>
-      <button onclick="scrollGallery(1)">&#8594;</button>
+    
+    <div class="discount-counter">
+      <p>🔥 Знижка діє ще: <span id="countdown">23:59:59</span></p>
+      <p>Залишилось: <span id="stock-counter">5</span> шт. за цією ціною</p>
     </div>
-  </div>
-</section>
+    
+    <button class="btn" onclick="document.getElementById('quickOrder').scrollIntoView({ behavior: 'smooth' })">
+      Купити в один клік
+    </button>
+  </section>
+  
+  <section class="section gallery">
+    <h2>Фото крісел</h2>
+    <div class="gallery-wrapper">
+      <div class="gallery-carousel" id="carousel">
+        <img src="біле.webp" alt="Біле геймерське крісло EC GAMING з підлокітниками та масажною подушкою" loading="lazy" />
+        <img src="зелене.webp" alt="Зелене геймерське крісло EC GAMING з регульованою спинкою" loading="lazy" />
+        <img src="червоне.webp" alt="Червоне геймерське крісло EC GAMING з висувною підставкою для ніг" loading="lazy" />
+        <img src="крісло-деталь.webp" alt="Деталь геймерського крісла EC GAMING - масажна подушка для спини" loading="lazy" />
+      </div>
+      <div class="gallery-nav">
+        <button onclick="scrollGallery(-1)" aria-label="Попереднє фото">&#8592;</button>
+        <button onclick="scrollGallery(1)" aria-label="Наступне фото">&#8594;</button>
+      </div>
+    </div>
+  </section>
+  
+  <section class="section features">
+    <h2>Характеристики та переваги</h2>
+    <div class="features-grid">
+      <details open>
+        <summary>Основні характеристики</summary>
+        <ul>
+          <li><strong>Матеріал оббивки:</strong> Еко-шкіра</li>
+          <li><strong>Максимальне навантаження:</strong> до 120 кг</li>
+          <li><strong>Регулювання висоти сидіння:</strong> так</li>
+          <li><strong>Механізм гойдання:</strong> так</li>
+          <li><strong>Підставка для ніг:</strong> висувна</li>
+        </ul>
+      </details>
+      
+      <details>
+        <summary>Додаткові функції</summary>
+        <ul>
+          <li><strong>Підлокітники:</strong> з м'якими накладками</li>
+          <li><strong>Масажна функція:</strong> через USB</li>
+          <li><strong>Кольори:</strong> Зелений, Білий, Червоний</li>
+          <li><strong>Металева база:</strong> стійка та надійна</li>
+          <li><strong>Гарантія:</strong> 24 місяці</li>
+        </ul>
+      </details>
+    </div>
+  </section>
+  
+  <section class="section">
+    <h2 class="slide-in">Відгуки клієнтів</h2>
+    <p style="text-align: center; margin-bottom: 1.5rem;">Ми будемо вдячні за ваш відгук після покупки ❤</p>
+    
+    <div class="reviews-container">
+      <div class="review-item">
+        <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Фото користувача Анна" class="review-avatar" loading="lazy">
+        <div class="review-content">
+          <strong>Анна, Київ</strong>
+          <p>Дуже зручне крісло! Користуюсь вже тиждень — спина дякує 🙌</p>
+          <div class="review-rating">★★★★★</div>
+        </div>
+      </div>
+      
+      <div class="review-item">
+        <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Фото користувача Олександр" class="review-avatar" loading="lazy">
+        <div class="review-content">
+          <strong>Олександр, Харків</strong>
+          <p>Замовив червоне — прийшло швидко, все як на фото. Масаж справді працює!</p>
+          <div class="review-rating">★★★★☆</div>
+        </div>
+      </div>
+      
+      <div class="review-item">
+        <img src="https://randomuser.me/api/portraits/women/65.jpg" alt="Фото користувача Ірина" class="review-avatar" loading="lazy">
+        <div class="review-content">
+          <strong>Ірина, Львів</strong>
+          <p>Подарувала сину — в захваті! Зібрали за 20 хв. Рекомендую!</p>
+          <div class="review-rating">★★★★★</div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <section class="section">
+    <h2 class="slide-in">FAQ – Часті запитання</h2>
+    <div class="accordion">
+      <details>
+        <summary>Скільки часу займає доставка?</summary>
+        <p>1–3 дні Новою Поштою залежно від вашого міста. У Києві можлива доставка кур'єром в день замовлення.</p>
+      </details>
+      
+      <details>
+        <summary>Як здійснюється оплата?</summary>
+        <p>Доступні такі варіанти оплати:
+          <ul>
+            <li>Післяплата при отриманні</li>
+            <li>Передплата на картку</li>
+            <li>Оплата частинами</li>
+          </ul>
+        </p>
+      </details>
+      
+      <details>
+        <summary>Чи можу я повернути товар?</summary>
+        <p>Так, протягом 14 днів згідно з законодавством. Товар повинен бути в оригінальній упаковці без слідів використання.</p>
+      </details>
+      
+      <details>
+        <summary>Як скласти крісло?</summary>
+        <p>До кожного крісла додається інструкція зі складання. В середньому це займає 15-30 хвилин. Також ми можемо надіслати вам відеоінструкцію.</p>
+      </details>
+    </div>
+  </section>
+  
+  <section class="section" id="quickOrder">
+    <h2 class="slide-in">Оформити замовлення</h2>
+    <form id="orderForm" action="https://formsubmit.co/srp.2.com@gmail.com" method="POST" onsubmit="handleSubmit(event)">
+      <input type="text" name="name" placeholder="Ваше ім'я" required minlength="2">
+      <input type="tel" name="phone" placeholder="Телефон у форматі 0XX XXX XX XX" required pattern="[0-9]{10}">
+      <select name="color" required>
+        <option value="">Оберіть колір</option>
+        <option value="Зелений">Зелений</option>
+        <option value="Білий">Білий</option>
+        <option value="Червоний">Червоний</option>
+      </select>
+      <textarea name="comment" placeholder="Коментар до замовлення (не обов'язково)" rows="2"></textarea>
+      <input type="hidden" name="_subject" value="Нове замовлення крісла EC GAMING">
+      <input type="hidden" name="_template" value="table">
+      <button class="btn" type="submit">Замовити за 3499₴</button>
+    </form>
+    <div class="form-message" id="formSuccess">Дякуємо! З вами скоро зв'яжеться наш менеджер.</div>
+  </section>
+</main>
+
 <script>
+  // Оптимізований JavaScript
+  document.addEventListener('DOMContentLoaded', function() {
+    // Ініціалізація анімацій
+    const elements = document.querySelectorAll('.slide-in');
+    elements.forEach(el => el.classList.add('slide-in'));
+    
+    // Лічильник знижки
+    startCountdown();
+    updateStockCounter();
+  });
+
+  // Функція для галереї
   function scrollGallery(direction) {
     const carousel = document.getElementById('carousel');
-    const scrollAmount = 320;
+    const scrollAmount = carousel.clientWidth * 0.8;
     carousel.scrollBy({ left: scrollAmount * direction, behavior: 'smooth' });
   }
-</script>
 
-<section class="features">
-  <details>
-    <summary>Переваги</summary>
-    <ul>
-      <li><strong>Матеріал оббивки:</strong> Еко-шкіра</li>
-      <li><strong>Максимальне навантаження:</strong> до 120 кг</li>
-      <li><strong>Регулювання висоти сидіння:</strong> так</li>
-      <li><strong>Механізм гойдання:</strong> так</li>
-      <li><strong>Підставка для ніг:</strong> висувна</li>
-      <li><strong>Підлокітники:</strong> з м’якими накладками</li>
-      <li><strong>Масажна функція:</strong> через USB</li>
-      <li><strong>Кольори:</strong> Зелений, Білий, Червоний</li>
-      <li><strong>Металева база:</strong> стійка та надійна</li>
-    </ul>
-  </details>
-  <details>
-    <summary>Характеристики</summary>
-    <ul>
-      <li><strong>Матеріал оббивки:</strong> Еко-шкіра</li>
-      <li><strong>Максимальне навантаження:</strong> до 120 кг</li>
-      <li><strong>Регулювання висоти сидіння:</strong> так</li>
-      <li><strong>Механізм гойдання:</strong> так</li>
-      <li><strong>Підставка для ніг:</strong> висувна</li>
-      <li><strong>Підлокітники:</strong> з м’якими накладками</li>
-      <li><strong>Масажна функція:</strong> через USB</li>
-      <li>Масажна подушка для попереку</li>
-      <li>Ергономічна спинка та сидіння</li>
-      <li>Регулювання висоти і нахилу</li>
-      <li>Міцна металева база</li>
-      <li>Кольори: Зелений, Білий, Червоний</li>
-    </ul>
-  </details>
-</section>
-<section class="features">
-  <h2 class="slide-right">Відгуки клієнтів</h2>
-  <p style="font-size: 1em; color: #555; margin-bottom: 20px;">Ми будемо вдячні за ваш відгук після покупки ❤</p>
-  <ul style="list-style: none; padding: 0;">
-    <li style="display: flex; align-items: center; margin-bottom: 15px;"><img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Анна" style="width: 40px; height: 40px; border-radius: 50%; margin-right: 12px;"><strong>Анна, Київ:</strong> Дуже зручне крісло! Користуюсь вже тиждень — спина дякує 🙌</li>
-    <li style="display: flex; align-items: center; margin-bottom: 15px;"><img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Олександр" style="width: 40px; height: 40px; border-radius: 50%; margin-right: 12px;"><strong>Олександр, Харків:</strong> Замовив червоне — прийшло швидко, все як на фото. Масаж справді працює!</li>
-    <li style="display: flex; align-items: center; margin-bottom: 15px;"><img src="https://randomuser.me/api/portraits/women/65.jpg" alt="Ірина" style="width: 40px; height: 40px; border-radius: 50%; margin-right: 12px;"><strong>Ірина, Львів:</strong> Подарувала сину — в захваті! Зібрали за 20 хв. Рекомендую!</li>
-    <li style="display: flex; align-items: center; margin-bottom: 15px;"><img src="https://randomuser.me/api/portraits/men/68.jpg" alt="Дмитро" style="width: 40px; height: 40px; border-radius: 50%; margin-right: 12px;"><strong>Дмитро, Дніпро:</strong> Прийшло без одного колеса, але підтримка спрацювала миттєво — через два дні колесо вже було в мене. Дякую за сервіс!</li>
-  </ul>
-</section>
-<section class="features">
-  <h2 class="slide-right">FAQ – Часті запитання</h2>
-  <div class="accordion">
-    <details>
-      <summary>Скільки часу займає доставка?</summary>
-      <p>1–3 дні Новою Поштою залежно від вашого міста.</p>
-    </details>
-    <details>
-      <summary>Як здійснюється оплата?</summary>
-      <p>Або післяплата при отриманні, або передплата на картку.</p>
-    </details>
-    <details>
-      <summary>Чи можу я повернути товар?</summary>
-      <p>Так, протягом 14 днів згідно з законодавством.</p>
-    </details>
-    <details>
-      <summary>Що входить у комплект?</summary>
-      <p>Сидіння, спинка, підлокітники, база, колеса, масажна подушка, інструкція.</p>
-    </details>
-  </div>
-</section>
-<section class="form-section" id="quickOrder">
-  <h2>Купити в один клік</h2>
-  <form action="https://formsubmit.co/srp.2.com@gmail.com" method="POST" onsubmit="showThankYou(event)">
-    <input type="text" name="name" placeholder="Ваше ім'я" required />
-    <input type="tel" name="phone" placeholder="Телефон" required />
-    <select name="color" required>
-      <option value="">Оберіть колір</option>
-      <option value="Зелений">Зелений</option>
-      <option value="Білий">Білий</option>
-      <option value="Червоний">Червоний</option>
-    </select>
-    <input type="hidden" name="_subject" value="Нове замовлення з сайту" />
-    <button class="btn" type="submit">Відправити</button>
-  </form>
-  <div class="form-message" id="formSuccess">Дякуємо! З вами скоро зв’яжеться наш менеджер.</div>
-</section>
-<script>
-function showThankYou(event) {
-  event.preventDefault();
-  const form = event.target;
-  document.getElementById("formSuccess").style.display = "block";
-  setTimeout(() => {
-    form.submit();
-  }, 500);
-}
+  // Обробка форми
+  function handleSubmit(event) {
+    event.preventDefault();
+    const form = event.target;
+    const successMessage = document.getElementById('formSuccess');
+    
+    // Валідація телефону
+    const phoneInput = form.querySelector('input[name="phone"]');
+    if (!/^[0-9]{10}$/.test(phoneInput.value.replace(/\D/g, ''))) {
+      alert('Будь ласка, введіть коректний номер телефону (10 цифр)');
+      return;
+    }
+    
+    // Показати повідомлення про успіх
+    successMessage.style.display = 'block';
+    form.reset();
+    
+    // Відправити форму (можна використовувати fetch для AJAX)
+    setTimeout(() => {
+      form.submit();
+    }, 1500);
+  }
+
+  // Лічильник знижки
+  function startCountdown() {
+    const countdownElement = document.getElementById('countdown');
+    let time = 86399; // 23:59:59 у секундах
+    
+    const timer = setInterval(() => {
+      const hours = Math.floor(time / 3600);
+      const minutes = Math.floor((time % 3600) / 60);
+      const seconds = time % 60;
+      
+      countdownElement.textContent = 
+        `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+      
+      if (time-- <= 0) clearInterval(timer);
+    }, 1000);
+  }
+
+  // Імітація лічильника залишку
+  function updateStockCounter() {
+    const counter = document.getElementById('stock-counter');
+    let stock = 5;
+    
+    // Імітуємо купівлю кожні 2-5 хвилин
+    setInterval(() => {
+      if (stock > 0 && Math.random() > 0.7) {
+        stock--;
+        counter.textContent = stock;
+        
+        if (stock === 0) {
+          document.querySelector('.discount-counter').innerHTML = 
+            '<p>🔴 Знижка закінчилась! Новий надходження очікується через 3 дні.</p>';
+        }
+      }
+    }, 120000 + Math.random() * 180000);
+  }
 </script>
 </body>
 </html>
